@@ -61,7 +61,7 @@ resource "aws_route53_record" "ready_set_cyber_prod_acme_TXT" {
 
   name = "_acme-challenge.readysetcyber.cyber.dhs.gov.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "ggiSDj6en3OqaS4Jw-6kzljOE5BN_92QlQkjGqlCaMU",
+    "Kut2kbnCwqWzbSOZ5hGWAICO2gUG4Y1zKD9xsbsFZDU",
   ]
   ttl     = 3000
   type    = "TXT"
