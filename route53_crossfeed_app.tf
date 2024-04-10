@@ -56,6 +56,18 @@ resource "aws_route53_record" "crossfeed_prod_acme_TXT" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+resource "aws_route53_record" "ready_set_cyber_prod_acme_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "lBVDy-eRJNPE2kLsri9_ED6_Ds5Dthq4QtUMIsJmZ3g",
+  ]
+  ttl     = 3000
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 # ------------------------------------------------------------------------------
 # Prod API entries
 # ------------------------------------------------------------------------------
