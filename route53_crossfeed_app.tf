@@ -59,9 +59,9 @@ resource "aws_route53_record" "crossfeed_prod_acme_TXT" {
 resource "aws_route53_record" "ready_set_cyber_prod_acme_TXT" {
   provider = aws.route53resourcechange
 
-  name = "_acme-challenge.readysetcyber.cyber.dhs.gov.${aws_route53_zone.cyber_dhs_gov.name}"
+  name = "_acme-challenge.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "Kut2kbnCwqWzbSOZ5hGWAICO2gUG4Y1zKD9xsbsFZDU",
+    "lBVDy-eRJNPE2kLsri9_ED6_Ds5Dthq4QtUMIsJmZ3g",
   ]
   ttl     = 3000
   type    = "TXT"
