@@ -15,7 +15,7 @@ resource "aws_route53_record" "ready_set_cyber_prod_digicert_CAA" {
   name     = "readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type     = "CAA"
   ttl      = 3600
- records = ["0 issue \"digicert.com\""]
+  records  = ["0 issue \"digicert.com\""]
 }
 
 resource "aws_route53_record" "ready_set_cyber_prod_CNAME" {
@@ -39,7 +39,7 @@ resource "aws_route53_record" "api_ready_set_cyber_prod_digicert_CAA" {
   name     = "api.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type     = "CAA"
   ttl      = 3600
-  records = ["0 issue \"digicert.com\""]
+  records  = ["0 issue \"digicert.com\""]
 }
 
 resource "aws_route53_record" "api_ready_set_cyber_prod_CNAME" {
@@ -63,7 +63,7 @@ resource "aws_route53_record" "ready_set_cyber_staging_digicert_CAA" {
   name     = "staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type     = "CAA"
   ttl      = 3600
-  records = ["0 issue \"digicert.com\""]
+  records  = ["0 issue \"digicert.com\""]
 }
 
 
@@ -76,5 +76,5 @@ resource "aws_route53_record" "api_ready_set_cyber_staging_digicert_CAA" {
   name     = "api.staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type     = "CAA"
   ttl      = 3600
-  records = ["0 issue \"digicert.com\""]
+  records  = ["0 issue \"digicert.com\""]
 }
