@@ -1,26 +1,12 @@
-# cool-dns-cyber.dhs.gov #
-
-[![GitHub Build Status](https://github.com/cisagov/cool-dns-cyber.dhs.gov/workflows/build/badge.svg)](https://github.com/cisagov/cool-dns-cyber.dhs.gov/actions)
-
-This repository contains a Terraform configuration that will provision
-the DNS zone `cyber.dhs.gov` within the COOL.  It creates an IAM role
-that allows sufficient permissions to modify resources records in this
-zone.  This role has a trust relationship with the users account.
-
-## Usage ##
-
-1. Run the command `terraform init`.
-1. Run the command `terraform apply`.
-
 <!-- BEGIN_TF_DOCS -->
-## Requirements ##
+## Requirements
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
 | aws | ~> 4.9 |
 
-## Providers ##
+## Providers
 
 | Name | Version |
 |------|---------|
@@ -31,13 +17,13 @@ zone.  This role has a trust relationship with the users account.
 | aws.route53resourcechange | ~> 4.9 |
 | terraform | n/a |
 
-## Modules ##
+## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
 
-## Resources ##
+## Resources
 
 | Name | Type |
 |------|------|
@@ -58,6 +44,11 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record._amazonses_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record._amazonses_dmarc_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record._dmarc_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.api_crossfeed_prod_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.api_crossfeed_staging_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.api_ready_set_cyber_prod_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.api_ready_set_cyber_prod_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.api_ready_set_cyber_staging_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.ceil_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -66,6 +57,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.crossfeed_prod_api_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_api_acm_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_api_acme_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_prod_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_dkim1_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_dkim2_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_prod_dkim3_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -89,6 +81,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.crossfeed_staging_cd_dkim1_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_staging_cd_dkim2_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_staging_cd_dkim3_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.crossfeed_staging_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_staging_dkim1_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_staging_dkim2_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.crossfeed_staging_dkim3_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -102,7 +95,10 @@ zone.  This role has a trust relationship with the users account.
 | [aws_route53_record.mail_SPF](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.pca_production_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.pca_staging_NS](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.ready_set_cyber_prod_CNAME](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.ready_set_cyber_prod_acme_TXT](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.ready_set_cyber_prod_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
+| [aws_route53_record.ready_set_cyber_staging_digicert_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_A](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_AAAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_CAA](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
@@ -150,7 +146,7 @@ zone.  This role has a trust relationship with the users account.
 | [terraform_remote_state.pca_staging](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 | [terraform_remote_state.terraform](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
-## Inputs ##
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -170,7 +166,7 @@ zone.  This role has a trust relationship with the users account.
 | sessendemail\_role\_name | The name to assign the IAM role (as well as the corresponding policy) that allows sufficient permissions to send email via AWS SES. | `string` | `"SesSendEmail-cyber.dhs.gov"` | no |
 | tags | Tags to apply to all AWS resources created. | `map(string)` | `{}` | no |
 
-## Outputs ##
+## Outputs
 
 | Name | Description |
 |------|-------------|
@@ -180,27 +176,3 @@ zone.  This role has a trust relationship with the users account.
 | sesmanagesuppressionlist\_role | IAM role that allows sufficient permissions to manage the AWS SES suppression list. |
 | sessendemail\_role | IAM role that allows sufficient permissions to send email via AWS SES. |
 <!-- END_TF_DOCS -->
-
-## Notes ##
-
-Running `pre-commit` requires running `terraform init` in every
-directory that contains Terraform code. In this repository, this is
-just the main directory.
-
-## Contributing ##
-
-We welcome contributions!  Please see [`CONTRIBUTING.md`](CONTRIBUTING.md) for
-details.
-
-## License ##
-
-This project is in the worldwide [public domain](LICENSE).
-
-This project is in the public domain within the United States, and
-copyright and related rights in the work worldwide are waived through
-the [CC0 1.0 Universal public domain
-dedication](https://creativecommons.org/publicdomain/zero/1.0/).
-
-All contributions to this project will be released under the CC0
-dedication. By submitting a pull request, you are agreeing to comply
-with this waiver of copyright interest.
