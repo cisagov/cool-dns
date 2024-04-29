@@ -99,21 +99,21 @@ resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
 }
 
 resource "aws_route53_record" "crossfeed_prod_digicert_CAA" {
- provider = aws.route53resourcechange
- zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
- name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
- type    = "CAA"
- ttl     = 3600
- records = ["0 issue \"digicert.com\""]
+  provider = aws.route53resourcechange
+  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
+  name     = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type     = "CAA"
+  ttl      = 3600
+  records  = ["0 issue \"digicert.com\""]
 }
 
 resource "aws_route53_record" "api_crossfeed_prod_digicert_CAA" {
- provider = aws.route53resourcechange
- zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
- name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
- type    = "CAA"
- ttl     = 3600
- records = ["0 issue \"digicert.com\""]
+  provider = aws.route53resourcechange
+  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
+  name     = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type     = "CAA"
+  ttl      = 3600
+  records  = ["0 issue \"digicert.com\""]
 }
 
 resource "aws_route53_record" "crossfeed_prod_api_acm_CNAME" {
@@ -231,21 +231,21 @@ resource "aws_route53_record" "crossfeed_staging_AAAA" {
 }
 
 resource "aws_route53_record" "crossfeed_staging_digicert_CAA" {
- provider = aws.route53resourcechange
- zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
- name     = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
- type     = "CAA"
- ttl      = 3600
- records  = ["0 issue \"digicert.com\""]
+  provider = aws.route53resourcechange
+  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
+  name     = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type     = "CAA"
+  ttl      = 3600
+  records  = ["0 issue \"digicert.com\""]
 }
 
 resource "aws_route53_record" "api_crossfeed_staging_digicert_CAA" {
- provider = aws.route53resourcechange
- zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
- name    = "api.crossfeed.staging.${aws_route53_zone.cyber_dhs_gov.name}"
- type    = "CAA"
- ttl     = 3600
- records = ["0 issue \"digicert.com\""]
+  provider = aws.route53resourcechange
+  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
+  name     = "api.crossfeed.staging.${aws_route53_zone.cyber_dhs_gov.name}"
+  type     = "CAA"
+  ttl      = 3600
+  records  = ["0 issue \"digicert.com\""]
 }
 
 resource "aws_route53_record" "crossfeed_staging_CNAME" {
