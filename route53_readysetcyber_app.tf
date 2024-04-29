@@ -18,8 +18,6 @@ resource "aws_route53_record" "ready_set_cyber_prod_digicert_CAA" {
   records  = ["0 issue \"digicert.com\""]
 }
 
-
-
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
 # (ALBs in us-gov-west-1 region)
 resource "aws_route53_record" "ready_set_cyber_prod_A" {
@@ -101,6 +99,7 @@ resource "aws_route53_record" "ready_set_cyber_staging_digicert_CAA" {
   ttl      = 3600
   records  = ["0 issue \"digicert.com\""]
 }
+
 resource "aws_route53_record" "staging_ready_set_cyber_staging_A" {
   provider = aws.route53resourcechange
 
