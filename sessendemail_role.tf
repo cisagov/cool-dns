@@ -12,7 +12,6 @@ data "aws_iam_policy_document" "sessendemail_assume_role_doc" {
     ]
 
     principals {
-      type = "AWS"
       # Account usage needs:
       # - Additional: The use case for each account should be documented with
       #   a comment in the Terraform variables file
@@ -29,6 +28,7 @@ data "aws_iam_policy_document" "sessendemail_assume_role_doc" {
         local.pca_account_ids,
         [local.users_account_id]
       )
+      type = "AWS"
     }
   }
 }

@@ -11,11 +11,12 @@
 
 resource "aws_route53_record" "ready_set_cyber_prod_digicert_CAA" {
   provider = aws.route53resourcechange
-  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
-  name     = "readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
-  type     = "CAA"
-  ttl      = 3600
-  records  = ["0 issue \"digicert.com\""]
+
+  name    = "readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
@@ -25,8 +26,8 @@ resource "aws_route53_record" "ready_set_cyber_prod_A" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -38,8 +39,8 @@ resource "aws_route53_record" "ready_set_cyber_prod_AAAA" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
@@ -47,17 +48,17 @@ resource "aws_route53_record" "ready_set_cyber_prod_AAAA" {
 }
 
 
-
 # ------------------------------------------------------------------------------
 # Prod API entries
 # ------------------------------------------------------------------------------
 resource "aws_route53_record" "api_ready_set_cyber_prod_digicert_CAA" {
   provider = aws.route53resourcechange
-  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
-  name     = "api.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
-  type     = "CAA"
-  ttl      = 3600
-  records  = ["0 issue \"digicert.com\""]
+
+  name    = "api.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
 resource "aws_route53_record" "api_ready_set_cyber_prod_A" {
@@ -65,8 +66,8 @@ resource "aws_route53_record" "api_ready_set_cyber_prod_A" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -78,8 +79,8 @@ resource "aws_route53_record" "api_ready_set_cyber_prod_AAAA" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
@@ -87,17 +88,17 @@ resource "aws_route53_record" "api_ready_set_cyber_prod_AAAA" {
 }
 
 
-
 # ------------------------------------------------------------------------------
 # Staging entries
 # ------------------------------------------------------------------------------
 resource "aws_route53_record" "ready_set_cyber_staging_digicert_CAA" {
   provider = aws.route53resourcechange
-  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
-  name     = "staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
-  type     = "CAA"
-  ttl      = 3600
-  records  = ["0 issue \"digicert.com\""]
+
+  name    = "staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
 resource "aws_route53_record" "staging_ready_set_cyber_staging_A" {
@@ -105,8 +106,8 @@ resource "aws_route53_record" "staging_ready_set_cyber_staging_A" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -118,8 +119,8 @@ resource "aws_route53_record" "staging_ready_set_cyber_prod_AAAA" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
@@ -132,11 +133,12 @@ resource "aws_route53_record" "staging_ready_set_cyber_prod_AAAA" {
 # ------------------------------------------------------------------------------
 resource "aws_route53_record" "api_ready_set_cyber_staging_digicert_CAA" {
   provider = aws.route53resourcechange
-  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
-  name     = "api.staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
-  type     = "CAA"
-  ttl      = 3600
-  records  = ["0 issue \"digicert.com\""]
+
+  name    = "api.staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
 resource "aws_route53_record" "api_staging_ready_set_cyber_staging_A" {
@@ -144,8 +146,8 @@ resource "aws_route53_record" "api_staging_ready_set_cyber_staging_A" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -157,8 +159,8 @@ resource "aws_route53_record" "api_staging_ready_set_cyber_staging_AAAA" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.staging.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
