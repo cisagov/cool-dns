@@ -21,8 +21,8 @@ resource "aws_route53_record" "rules_ncats_A" {
 
   alias {
     name                   = "d35iq78wt3hgdh.cloudfront.net."
-    zone_id                = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
+    zone_id                = "Z2FDTNDATAQYW2"
   }
   name    = "rules.ncats.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -34,8 +34,8 @@ resource "aws_route53_record" "rules_ncats_AAAA" {
 
   alias {
     name                   = "d35iq78wt3hgdh.cloudfront.net."
-    zone_id                = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
+    zone_id                = "Z2FDTNDATAQYW2"
   }
   name    = "rules.ncats.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"

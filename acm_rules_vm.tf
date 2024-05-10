@@ -34,12 +34,11 @@ resource "aws_route53_record" "rules_certificate_validation" {
   }
 
   allow_overwrite = true
-
-  name    = each.value.name
-  records = [each.value.record]
-  ttl     = 60
-  type    = each.value.type
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
 # ------------------------------------------------------------------------------

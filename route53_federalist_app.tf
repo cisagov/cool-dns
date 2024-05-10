@@ -7,8 +7,8 @@ resource "aws_route53_record" "root_A" {
 
   alias {
     name                   = "d3nie9z8rrasif.cloudfront.net."
-    zone_id                = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
+    zone_id                = "Z2FDTNDATAQYW2"
   }
   name    = aws_route53_zone.cyber_dhs_gov.name
   type    = "A"
@@ -20,8 +20,8 @@ resource "aws_route53_record" "root_AAAA" {
 
   alias {
     name                   = "d3nie9z8rrasif.cloudfront.net."
-    zone_id                = "Z2FDTNDATAQYW2"
     evaluate_target_health = false
+    zone_id                = "Z2FDTNDATAQYW2"
   }
   name    = aws_route53_zone.cyber_dhs_gov.name
   type    = "AAAA"

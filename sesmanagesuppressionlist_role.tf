@@ -13,10 +13,10 @@ data "aws_iam_policy_document" "sesmanagesuppressionlist_assume_role_doc" {
     ]
 
     principals {
-      type = "AWS"
       identifiers = [
         local.users_account_id,
       ]
+      type = "AWS"
     }
   }
 }
