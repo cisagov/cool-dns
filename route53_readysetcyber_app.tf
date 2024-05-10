@@ -46,18 +46,6 @@ resource "aws_route53_record" "ready_set_cyber_prod_AAAA" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "readysetcyber_cd_acme_TXT" {
-  provider = aws.route53resourcechange
-
-  name = "_acme-challenge.readysetcyber-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = [
-    "5GFu45J8DveOcUvkRgvFhGSXHho4eMMaR_-qtPQG4rw",
-  ]
-  ttl     = 3000
-  type    = "TXT"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
 
 
 # ------------------------------------------------------------------------------
