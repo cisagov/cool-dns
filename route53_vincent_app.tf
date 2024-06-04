@@ -29,5 +29,3 @@ resource "aws_route53_record" "vincent_stage_CNAME" {
   type    = "CNAME"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
-
-
