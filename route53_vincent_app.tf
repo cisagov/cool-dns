@@ -23,7 +23,7 @@ resource "aws_route53_record" "vincent_dev_CNAME" {
 resource "aws_route53_record" "vincent_stage_CNAME" {
   provider = aws.route53resourcechange
 
-  name    = "vincent.rsaa.${aws_route53_zone.cyber_dhs_gov.name}"
+  name    = "staging.vincent.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["vincent-stage-1522298475.us-gov-west-1.elb.amazonaws.com"]
   ttl     = 300
   type    = "CNAME"
