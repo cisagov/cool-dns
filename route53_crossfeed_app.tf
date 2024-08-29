@@ -13,8 +13,8 @@ resource "aws_route53_record" "crossfeed_prod_A" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -26,8 +26,8 @@ resource "aws_route53_record" "crossfeed_prod_AAAA" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
@@ -44,6 +44,30 @@ resource "aws_route53_record" "crossfeed_prod_docs_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+resource "aws_route53_record" "crossfeed_prod_acme_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "ct0l3YNdaIble-FQ0CgaGrurEcZAVPn6OrphYnXmcRM",
+  ]
+  ttl     = 3000
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "ready_set_cyber_prod_acme_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.readysetcyber.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "lBVDy-eRJNPE2kLsri9_ED6_Ds5Dthq4QtUMIsJmZ3g",
+  ]
+  ttl     = 3000
+  type    = "TXT"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 # ------------------------------------------------------------------------------
 # Prod API entries
 # ------------------------------------------------------------------------------
@@ -53,8 +77,8 @@ resource "aws_route53_record" "crossfeed_prod_api_A" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -66,11 +90,31 @@ resource "aws_route53_record" "crossfeed_prod_api_AAAA" {
 
   alias {
     name                   = "crossfeed-prod-1638162291.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_prod_digicert_CAA" {
+  provider = aws.route53resourcechange
+
+  name    = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "api_crossfeed_prod_digicert_CAA" {
+  provider = aws.route53resourcechange
+
+  name    = "api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -81,6 +125,18 @@ resource "aws_route53_record" "crossfeed_prod_api_acm_CNAME" {
   records = ["_829d98e4bbf4eeaae36108a98a720ce2.jfrzftwwjs.acm-validations.aws."]
   ttl     = 300
   type    = "CNAME"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_prod_api_acme_TXT" {
+  provider = aws.route53resourcechange
+
+  name = "_acme-challenge.api.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "W0TCCWlQGWMiEncVtPUCihlNj0oj-6BcEPzOSwAjbY8",
+  ]
+  ttl     = 3000
+  type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -127,8 +183,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_A" {
 
   alias {
     name                   = "d-0yk2b6imci.execute-api.us-east-1.amazonaws.com."
-    zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
   }
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -140,8 +196,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
 
   alias {
     name                   = "d-0yk2b6imci.execute-api.us-east-1.amazonaws.com."
-    zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
   }
   name    = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
@@ -155,8 +211,8 @@ resource "aws_route53_record" "crossfeed_staging_A" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -168,11 +224,31 @@ resource "aws_route53_record" "crossfeed_staging_AAAA" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_staging_digicert_CAA" {
+  provider = aws.route53resourcechange
+
+  name    = "staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "api_crossfeed_staging_digicert_CAA" {
+  provider = aws.route53resourcechange
+
+  name    = "api.crossfeed.staging.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = ["0 issue \"digicert.com\""]
+  ttl     = 3600
+  type    = "CAA"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -186,14 +262,14 @@ resource "aws_route53_record" "crossfeed_staging_CNAME" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_staging_cd_CNAME" {
-  provider = aws.route53resourcechange
-  name    = "_778113d42c9d50544ff24081c8690e7b.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["_be6c148419746ed67c9439603507824f.zcdnftlygx.acm-validations.aws."]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
+# resource "aws_route53_record" "crossfeed_staging_cd_CNAME" {
+#   provider = aws.route53resourcechange
+#   name    = "_778113d42c9d50544ff24081c8690e7b.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+#   records = ["_be6c148419746ed67c9439603507824f.zcdnftlygx.acm-validations.aws."]
+#   ttl     = 300
+#   type    = "CNAME"
+#   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+# }
 
 resource "aws_route53_record" "crossfeed_staging_MX" {
   provider = aws.route53resourcechange
@@ -240,8 +316,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_A" {
 
   alias {
     name                   = "d-y5130perp8.execute-api.us-east-1.amazonaws.com."
-    zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
   }
   name    = "api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -253,8 +329,8 @@ resource "aws_route53_record" "crossfeed_staging_cd_api_AAAA" {
 
   alias {
     name                   = "d-y5130perp8.execute-api.us-east-1.amazonaws.com."
-    zone_id                = var.api_gateway_zone_id
     evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
   }
   name    = "api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
@@ -268,8 +344,8 @@ resource "aws_route53_record" "crossfeed_staging_api_A" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "A"
@@ -281,8 +357,8 @@ resource "aws_route53_record" "crossfeed_staging_api_AAAA" {
 
   alias {
     name                   = "crossfeed-stage-1792947306.us-gov-west-1.elb.amazonaws.com."
-    zone_id                = "Z33AYJ8TM3BH4J"
     evaluate_target_health = false
+    zone_id                = "Z33AYJ8TM3BH4J"
   }
   name    = "api.staging.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   type    = "AAAA"
@@ -300,15 +376,15 @@ resource "aws_route53_record" "crossfeed_staging_api_CNAME" {
 }
 
 
-resource "aws_route53_record" "crossfeed_staging_cd_api_CNAME" {
-  provider = aws.route53resourcechange
+# resource "aws_route53_record" "crossfeed_staging_cd_api_CNAME" {
+#   provider = aws.route53resourcechange
 
-  name    = "_75f0c44adb3c8ec0023ddc11585227e8.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["_c4ade117ce7d85d8765dc1e8925140df.zcdnftlygx.acm-validations.aws."]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
+#   name    = "_75f0c44adb3c8ec0023ddc11585227e8.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+#   records = ["_c4ade117ce7d85d8765dc1e8925140df.zcdnftlygx.acm-validations.aws."]
+#   ttl     = 300
+#   type    = "CNAME"
+#   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+# }
 
 resource "aws_route53_record" "crossfeed_staging_api_acme_TXT" {
   provider = aws.route53resourcechange
