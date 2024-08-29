@@ -264,11 +264,11 @@ resource "aws_route53_record" "crossfeed_staging_CNAME" {
 
 resource "aws_route53_record" "crossfeed_staging_cd_CNAME" {
   provider = aws.route53resourcechange
-  name    = "_778113d42c9d50544ff24081c8690e7b.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = ["_be6c148419746ed67c9439603507824f.zcdnftlygx.acm-validations.aws."]
-  ttl     = 300
-  type    = "CNAME"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+  name     = "_778113d42c9d50544ff24081c8690e7b.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records  = ["_be6c148419746ed67c9439603507824f.zcdnftlygx.acm-validations.aws."]
+  ttl      = 300
+  type     = "CNAME"
+  zone_id  = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
 resource "aws_route53_record" "crossfeed_staging_MX" {
