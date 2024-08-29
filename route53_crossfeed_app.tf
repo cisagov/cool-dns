@@ -378,7 +378,6 @@ resource "aws_route53_record" "crossfeed_staging_api_CNAME" {
 
 resource "aws_route53_record" "crossfeed_staging_cd_api_CNAME" {
   provider = aws.route53resourcechange
-
   name    = "_75f0c44adb3c8ec0023ddc11585227e8.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = ["_c4ade117ce7d85d8765dc1e8925140df.zcdnftlygx.acm-validations.aws."]
   ttl     = 300
