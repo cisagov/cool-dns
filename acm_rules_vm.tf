@@ -5,8 +5,11 @@
 resource "aws_acm_certificate" "rules" {
   provider = aws.acmresourcechange
 
-  domain_name       = "rules.vm.cyber.dhs.gov"
-  validation_method = "DNS"
+  domain_name = "rules.vm.cyber.dhs.gov"
+  # Include the legacy subdomain as a SAN so that requests to it are also
+  # covered by the certificate.
+  subject_alternative_names = ["rules.ncats.cyber.dhs.gov"]
+  validation_method         = "DNS"
 
   lifecycle {
     create_before_destroy = true
@@ -34,12 +37,11 @@ resource "aws_route53_record" "rules_certificate_validation" {
   }
 
   allow_overwrite = true
-
-  name    = each.value.name
-  records = [each.value.record]
-  ttl     = 60
-  type    = each.value.type
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
 # ------------------------------------------------------------------------------
