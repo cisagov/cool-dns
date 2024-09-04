@@ -375,6 +375,19 @@ resource "aws_route53_record" "crossfeed_staging_cd_TXT" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+resource "aws_route53_record" "crossfeed_staging_digicert_letsencrypt_CAA" {
+  provider = aws.route53resourcechange
+
+  name = "staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "0 issue \"digicert.com\"",
+    "0 issue \"letsencrypt.org\"",
+  ]
+  ttl     = 3600
+  type    = "CAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 # The hosted_zone_id for the below records comes from https://docs.aws.amazon.com/general/latest/gr/elb.html
 # (ALBs in us-gov-west-1 region)
 resource "aws_route53_record" "crossfeed_staging_api_A" {
