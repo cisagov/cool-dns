@@ -182,7 +182,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_A" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d-6duqftvveb.execute-api.us-east-1.amazonaws.com."
+    name                   = "d-0yk2b6imci.execute-api.us-east-1.amazonaws.com."
     evaluate_target_health = false
     zone_id                = var.api_gateway_zone_id
   }
@@ -195,7 +195,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_AAAA" {
   provider = aws.route53resourcechange
 
   alias {
-    name                   = "d-6duqftvveb.execute-api.us-east-1.amazonaws.com."
+    name                   = "d-0yk2b6imci.execute-api.us-east-1.amazonaws.com."
     evaluate_target_health = false
     zone_id                = var.api_gateway_zone_id
   }
