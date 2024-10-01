@@ -21,6 +21,12 @@ resource "aws_route53_record" "root_CAA" {
 # Generation of the domain identity token and DKIM keys in SES.
 # ------------------------------------------------------------------------------
 
+# We should consider upgrading to aws_sesv2_email_identity, although
+# it would be a destructive upgrade:
+# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sesv2_email_identity
+#
+# See also
+# https://github.com/trussworks/terraform-aws-ses-domain/blob/main/main.tf
 resource "aws_ses_domain_identity" "cyhy_dhs_gov_identity" {
   provider = aws.route53resourcechange
 
