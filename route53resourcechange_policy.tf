@@ -33,10 +33,12 @@ data "aws_iam_policy_document" "route53resourcechange_doc" {
   statement {
     actions = [
       "ses:DeleteIdentity",
+      "ses:GetAccount",
       "ses:GetIdentityDkimAttributes",
       "ses:GetIdentityMailFromDomainAttributes",
       "ses:GetIdentityNotificationAttributes",
       "ses:GetIdentityVerificationAttributes",
+      "ses:PutAccountVdmAttributes",
       "ses:SetIdentityHeadersInNotificationsEnabled",
       "ses:SetIdentityMailFromDomain",
       "ses:SetIdentityNotificationTopic",

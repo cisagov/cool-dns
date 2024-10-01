@@ -27,6 +27,25 @@ resource "aws_ses_domain_identity" "cyhy_dhs_gov_identity" {
   domain = aws_route53_zone.cyber_dhs_gov.name
 }
 
+# VDM will show us some useful information about emails that bounced,
+# such as the diagnostic code indicating the reason for the bounce.
+#
+# We don't care about the engagement metrics, since we don't care to
+# track if users click the attachments we send.
+resource "aws_sesv2_account_vdm_attributes" "cyber_dhs_gov_vdm" {
+  provider = aws.route53resourcechange
+
+  vdm_enabled = "ENABLED"
+
+  dashboard_attributes {
+    engagement_metrics = "DISABLED"
+  }
+
+  guardian_attributes {
+    optimized_shared_delivery = "ENABLED"
+  }
+}
+
 resource "aws_ses_domain_dkim" "cyber_dhs_gov_dkim" {
   provider = aws.route53resourcechange
 
