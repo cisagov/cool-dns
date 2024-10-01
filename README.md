@@ -18,24 +18,24 @@ zone.  This role has a trust relationship with the users account.
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 4.9 |
+| aws | ~> 5.20 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 4.9 |
-| aws.acmresourcechange | ~> 4.9 |
-| aws.dnsprovisionaccount | ~> 4.9 |
-| aws.organizationsreadonly | ~> 4.9 |
-| aws.route53resourcechange | ~> 4.9 |
+| aws | ~> 5.20 |
+| aws.acmresourcechange | ~> 5.20 |
+| aws.dnsprovisionaccount | ~> 5.20 |
+| aws.organizationsreadonly | ~> 5.20 |
+| aws.route53resourcechange | ~> 5.20 |
 | terraform | n/a |
 
 ## Modules ##
 
 | Name | Source | Version |
 |------|--------|---------|
-| read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
+| read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | feature%2Fadd-option-for-write-permission |
 
 ## Resources ##
 
@@ -150,6 +150,7 @@ zone.  This role has a trust relationship with the users account.
 | [aws_ses_identity_notification_topic.cyber_dhs_gov_bounce](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_identity_notification_topic) | resource |
 | [aws_ses_identity_notification_topic.cyber_dhs_gov_complaint](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_identity_notification_topic) | resource |
 | [aws_ses_identity_notification_topic.cyber_dhs_gov_delivery](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ses_identity_notification_topic) | resource |
+| [aws_sesv2_account_vdm_attributes.cyber_dhs_gov_vdm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sesv2_account_vdm_attributes) | resource |
 | [aws_sns_topic.cyber_dhs_gov_bounce](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
 | [aws_sns_topic.cyber_dhs_gov_complaint](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
 | [aws_sns_topic.cyber_dhs_gov_delivery](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic) | resource |
