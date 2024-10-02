@@ -8,6 +8,7 @@ data "aws_iam_policy_document" "sesmanagesuppressionlist_doc" {
   statement {
     actions = [
       "ses:DeleteSuppressedDestination",
+      "ses:GetMessageInsights",
       "ses:GetSuppressedDestination",
       "ses:ListSuppressedDestinations",
       "ses:PutAccountSuppressionAttributes",
