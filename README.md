@@ -35,7 +35,7 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Source | Version |
 |------|--------|---------|
-| read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | feature%2Fadd-option-for-write-permission |
+| read\_terraform\_state | github.com/cisagov/terraform-state-read-role-tf-module | n/a |
 
 ## Resources ##
 
