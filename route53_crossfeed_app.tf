@@ -324,10 +324,10 @@ resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_prod_digicert_letsencrypt_CAA" {
+resource "aws_route53_record" "crossfeed_integration_digicert_letsencrypt_CAA" {
   provider = aws.route53resourcechange
 
-  name = "crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  name = "integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
     "0 issue \"digicert.com\"",
     "0 issue \"letsencrypt.org\"",
