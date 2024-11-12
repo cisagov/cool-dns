@@ -12,9 +12,13 @@ terraform {
     # for more information about the changes in v4.9 and
     # https://www.hashicorp.com/blog/terraform-aws-provider-4-0-refactors-s3-bucket-resource
     # for more information about the S3 bucket refactor.
+    #
+    # Version 5.20 of the Terraform AWS provider is the first version
+    # to offer the aws_sesv2_account_vdm_attributes resource, which we
+    # require here.
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.9"
+      version = "~> 5.20"
     }
   }
 
