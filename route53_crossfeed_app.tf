@@ -350,7 +350,6 @@ resource "aws_route53_record" "crossfeed_integration_A" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-# The following A and AAAA will follow once we have the SSL certificate for the API integration environment
 resource "aws_route53_record" "crossfeed_integration_api_A" {
   provider = aws.route53resourcechange
 
