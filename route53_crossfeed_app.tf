@@ -312,15 +312,30 @@ resource "aws_route53_record" "crossfeed_staging_acme_TXT" {
 # Integration entries
 # ------------------------------------------------------------------------------
 
-resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
+resource "aws_route53_record" "crossfeed_integration_A" {
   provider = aws.route53resourcechange
 
-  name = "_acme-challenge.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  records = [
-    "HtrLpSbDjNcA9ZfrEw41G78bco0lZz1AxaLNgR7YmWs",
-  ]
-  ttl     = 3000
-  type    = "TXT"
+  alias {
+    name                   = "d-sl8v3ffkci.execute-api.us-east-1.amazonaws.com."
+    evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
+  }
+  name    = "integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type    = "A"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+
+resource "aws_route53_record" "crossfeed_integration_AAAA" {
+  provider = aws.route53resourcechange
+
+  alias {
+    name                   = "d-sl8v3ffkci.execute-api.us-east-1.amazonaws.com."
+    evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
+  }
+  name    = "integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type    = "AAAA"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
@@ -337,18 +352,22 @@ resource "aws_route53_record" "crossfeed_integration_digicert_letsencrypt_CAA" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
-resource "aws_route53_record" "crossfeed_integration_A" {
+resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
   provider = aws.route53resourcechange
 
-  alias {
-    name                   = "d-sl8v3ffkci.execute-api.us-east-1.amazonaws.com."
-    evaluate_target_health = false
-    zone_id                = var.api_gateway_zone_id
-  }
-  name    = "integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  type    = "A"
+  name = "_acme-challenge.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  records = [
+    "HtrLpSbDjNcA9ZfrEw41G78bco0lZz1AxaLNgR7YmWs",
+  ]
+  ttl     = 3000
+  type    = "TXT"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
+
+# ------------------------------------------------------------------------------
+# Integration API entries
+# ------------------------------------------------------------------------------
+
 
 resource "aws_route53_record" "crossfeed_integration_api_A" {
   provider = aws.route53resourcechange
@@ -375,23 +394,6 @@ resource "aws_route53_record" "crossfeed_integration_api_AAAA" {
   type    = "AAAA"
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
-
-resource "aws_route53_record" "crossfeed_integration_AAAA" {
-  provider = aws.route53resourcechange
-
-  alias {
-    name                   = "d-sl8v3ffkci.execute-api.us-east-1.amazonaws.com."
-    evaluate_target_health = false
-    zone_id                = var.api_gateway_zone_id
-  }
-  name    = "integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
-  type    = "AAAA"
-  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
-}
-
-# ------------------------------------------------------------------------------
-# Integration API entries
-# ------------------------------------------------------------------------------
 
 resource "aws_route53_record" "crossfeed_integration_api_TXT" {
   provider = aws.route53resourcechange
