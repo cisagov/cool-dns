@@ -350,6 +350,33 @@ resource "aws_route53_record" "crossfeed_integration_A" {
   zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
 }
 
+# The following A and AAAA will follow once we have the SSL certificate for the API integration environment
+resource "aws_route53_record" "crossfeed_integration_api_A" {
+  provider = aws.route53resourcechange
+
+  alias {
+    name                   = "d-3kn94fjcb8.execute-api.us-east-1.amazonaws.com."
+    evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
+  }
+  name    = "api.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type    = "A"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
+resource "aws_route53_record" "crossfeed_integration_api_AAAA" {
+  provider = aws.route53resourcechange
+
+  alias {
+    name                   = "d-3kn94fjcb8.execute-api.us-east-1.amazonaws.com."
+    evaluate_target_health = false
+    zone_id                = var.api_gateway_zone_id
+  }
+  name    = "api.integration.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
+  type    = "AAAA"
+  zone_id = aws_route53_zone.cyber_dhs_gov.zone_id
+}
+
 resource "aws_route53_record" "crossfeed_integration_AAAA" {
   provider = aws.route53resourcechange
 
