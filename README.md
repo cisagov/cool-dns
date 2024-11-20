@@ -17,7 +17,7 @@ zone.  This role has a trust relationship with the users account.
 
 | Name | Version |
 |------|---------|
-| terraform | ~> 1.0 |
+| terraform | ~> 1.1 |
 | aws | ~> 5.20 |
 
 ## Providers ##
