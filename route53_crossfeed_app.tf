@@ -368,7 +368,6 @@ resource "aws_route53_record" "crossfeed_integration_acme_TXT" {
 # Integration API entries
 # ------------------------------------------------------------------------------
 
-
 resource "aws_route53_record" "crossfeed_integration_api_A" {
   provider = aws.route53resourcechange
 
@@ -455,7 +454,7 @@ resource "aws_route53_record" "crossfeed_api_staging_cd_TXT" {
 
   name = "_acme-challenge.api.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "oAKlQzzXD40dDvl-D-qkoPHvrRiUudyexsv7_790944",
+    "b46k-0MntwazFRg_hz4f1zOHuboertdcrb0CSd-u9kQ",
   ]
   ttl     = 3000
   type    = "TXT"
@@ -480,7 +479,7 @@ resource "aws_route53_record" "crossfeed_staging_cd_TXT" {
 
   name = "_acme-challenge.staging-cd.crossfeed.${aws_route53_zone.cyber_dhs_gov.name}"
   records = [
-    "S9yJvnXVz1J6WL__0Lf12au-baP1gWBLm8Gi_hbcJ28",
+    "Yu58IyT5wJzQPL0NrwB2Ne4203UXetJKbALe64qk9gg",
   ]
   ttl     = 3000
   type    = "TXT"
